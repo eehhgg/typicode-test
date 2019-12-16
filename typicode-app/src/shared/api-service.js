@@ -22,6 +22,22 @@ class ApiService {
     });
   }
 
+  getPosts(userId) {
+    const url = this.apiUrl + 'posts?userId=' + encodeURIComponent(userId);
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(posts => {
+
+          resolve(posts);
+
+        },
+        error => {
+          reject(error);
+        });
+    });
+  }
+
 }
 
 export default ApiService;

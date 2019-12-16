@@ -55,7 +55,7 @@ class Login extends React.Component {
           email: '',
           error: ''
         });
-        this.props.onLogin({ user: user });
+        this.props.onLogin(user);
 
       })
       .catch(error => {
