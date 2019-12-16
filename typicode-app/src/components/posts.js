@@ -1,5 +1,6 @@
 import React from 'react'
 import ApiService from '../shared/api-service';
+import Comments from './comments';
 
 class Posts extends React.Component {
 
@@ -47,7 +48,8 @@ class Posts extends React.Component {
         { this.state.posts && !this.state.selectedPost &&
           this.state.posts.map(post => (
             <div key={ post.id }>
-              <div>{ post.userId }</div>
+              <div>User ID: { post.userId }</div>
+              <div>Post ID: { post.id }</div>
               <div>{ post.title }</div>
               <div>{ post.body }</div>
               <button onClick={ () => this.selectPost(post) }>View comments</button>
@@ -55,10 +57,9 @@ class Posts extends React.Component {
           ))
         }
         { this.state.selectedPost &&
-          <div>
-            Post comments
-            <button onClick={ () => this.selectPost(null) }>View Posts</button>
-          </div>
+          <Comments
+            postId={ this.state.selectedPost.id }
+            onClose={ () => this.selectPost(null) } />
         }
       </div>
     );

@@ -38,6 +38,22 @@ class ApiService {
     });
   }
 
+  getComments(postId) {
+    const url = this.apiUrl + 'comments?postId=' + encodeURIComponent(postId);
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(comments => {
+
+          resolve(comments);
+
+        },
+        error => {
+          reject(error);
+        });
+    });
+  }
+
 }
 
 export default ApiService;
