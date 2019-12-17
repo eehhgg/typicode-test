@@ -42,6 +42,7 @@ class Comments extends React.Component {
       <div>
         { this.state.error && <div className="text-danger">{ this.state.error }</div> }
         <button onClick={ () => this.props.onClose() }>View Posts</button>
+        { !this.state.error && !this.state.comments && <div className="text-info">Loading...</div> }
         { this.state.comments &&
           this.state.comments.map(comment => (
             <div key={ comment.id }>

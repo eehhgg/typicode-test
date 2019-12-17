@@ -47,6 +47,7 @@ class Posts extends React.Component {
     return (
       <div>
         { this.state.error && <div className="text-danger">{ this.state.error }</div> }
+        { !this.state.error && !this.state.posts && <div className="text-info">Loading...</div> }
         { this.state.posts && !this.state.selectedPost &&
           <div>
 
