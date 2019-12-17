@@ -11,7 +11,8 @@ class Posts extends React.Component {
     this.state = {
       posts: null,
       selectedPost: null,
-      error: ''
+      error: '',
+      showStarred: false
     };
   }
 
@@ -37,7 +38,8 @@ class Posts extends React.Component {
     this.setState({
       posts: null,
       selectedPost: null,
-      error: ''
+      error: '',
+      showStarred: false
     });
   }
 
@@ -46,15 +48,25 @@ class Posts extends React.Component {
       <div>
         { this.state.error && <div className="text-danger">{ this.state.error }</div> }
         { this.state.posts && !this.state.selectedPost &&
-          this.state.posts.map(post => (
-            <div key={ post.id }>
-              <div>User ID: { post.userId }</div>
-              <div>Post ID: { post.id }</div>
-              <div>{ post.title }</div>
-              <div>{ post.body }</div>
-              <button onClick={ () => this.selectPost(post) }>View comments</button>
-            </div>
-          ))
+          <div>
+
+            { !this.state.showStarred && <button onClick={ () => this.showStarred(1) }>Show Starred</button> }
+            { this.state.showStarred && <button onClick={ () => this.showStarred(0) }>Show All</button> }
+
+            { this.state.posts.map( (post, i) => (
+                ( !this.state.showStarred || post.starred ) &&
+                <div key={ post.id }>
+                  <div>User ID: { post.userId }</div>
+                  <div>Post ID: { post.id }</div>
+                  <div>{ post.title }</div>
+                  <div>{ post.body }</div>
+                  { !post.starred && <button onClick={ () => this.starPost(i, 1) }>Star</button> }
+                  { post.starred && <button onClick={ () => this.starPost(i, 0) }>Unstar</button> }
+                  <button onClick={ () => this.selectPost(post) }>View comments</button>
+                </div>
+            )) }
+
+          </div>
         }
         { this.state.selectedPost &&
           <Comments
@@ -68,6 +80,20 @@ class Posts extends React.Component {
   selectPost(post) {
     this.setState({
       selectedPost: post
+    });
+  }
+
+  starPost(i, b) {
+    this.setState(prevState => {
+      const newPosts = [...prevState.posts];
+      newPosts[i].starred = ( b ? true : false );
+      return { posts: newPosts };
+    });
+  }
+
+  showStarred(b) {
+    this.setState({
+      showStarred: ( b ? true : false )
     });
   }
 
