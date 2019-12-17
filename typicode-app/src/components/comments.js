@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ApiService from '../shared/api-service';
 
 class Comments extends React.Component {

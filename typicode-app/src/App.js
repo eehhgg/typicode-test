@@ -16,7 +16,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>UMBRELLACORP</div>
         { !this.state.user && <Login onLogin={ user => this.onLogin(user) } /> }
         { this.state.user &&
           <div>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './login.css';
 import ApiService from '../shared/api-service';
 
 class Login extends React.Component {
@@ -17,13 +18,26 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={ this.onSubmit }>
-        { this.state.error && <div className="text-danger">{ this.state.error }</div> }
-        <input value={ this.state.username } name="username" type="text" maxLength="40" required placeholder="Username" onChange={ this.handleInputChange } />
-        <input value={ this.state.email } name="email" type="email" maxLength="40" required placeholder="Email" onChange={ this.handleInputChange } />
-        <button type="submit">SIGN IN</button>
-      </form>
+      <div className="section-signin">
+        <h1 className="h3 mb-3 font-weight-normal">UMBRELLACORP</h1>
+        <form onSubmit={ this.onSubmit }>
+          { this.state.error && <div className="error">{ this.state.error }</div> }
+          <label htmlFor="inputUsername" className="sr-only">Username</label>
+          <input id="inputUsername" className="form-control" name="username" type="text" maxLength="40" required autoFocus placeholder="Username" value={ this.state.username } onChange={ this.handleInputChange } />
+          <label htmlFor="inputEmail" className="sr-only">Email</label>
+          <input id="inputEmail" className="form-control" name="email" type="email" maxLength="40" required placeholder="Email" value={ this.state.email } onChange={ this.handleInputChange } />
+          <button className="btn btn-md" type="submit">SIGN IN</button>
+        </form>
+      </div>
     );
+  }
+
+  componentDidMount() {
+    document.getElementById('page-body').className = 'body-signin';
+  }
+
+  componentWillUnmount() {
+    document.getElementById('page-body').className = '';
   }
 
   handleInputChange(event) {

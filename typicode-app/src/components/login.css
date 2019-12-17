@@ -1,0 +1,66 @@
+
+.body-signin {
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #049fd9, #7e4fd5);
+}
+
+.section-signin h1 {
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+.section-signin .error {
+  color: #fff;
+}
+.section-signin form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.section-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.section-signin .form-control:focus {
+  z-index: 2;
+}
+.section-signin input,
+.section-signin input:focus {
+  background-color: transparent;
+  border: 0 none;
+  border-radius: 0;
+  color: #fff;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #fff;
+  opacity: 0.6;
+}
+.section-signin button[type="submit"] {
+  color: #049fd9;
+  background-color: #fff;
+  font-weight: bold;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+.section-signin input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+.section-signin input:-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+.section-signin input::-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
