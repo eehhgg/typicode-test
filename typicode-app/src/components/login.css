@@ -6,6 +6,8 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
+  color: #fff;
+  background-color: #049fd9;
   background-image: linear-gradient(to bottom right, #049fd9, #7e4fd5);
 }
 

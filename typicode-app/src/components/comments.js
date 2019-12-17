@@ -41,17 +41,21 @@ class Comments extends React.Component {
     return (
       <div>
         { this.state.error && <div className="text-danger">{ this.state.error }</div> }
-        <button onClick={ () => this.props.onClose() }>View Posts</button>
+        <button onClick={ () => this.props.onClose() } className="mb-3">View Posts</button>
         { !this.state.error && !this.state.comments && <div className="text-info">Loading...</div> }
         { this.state.comments &&
-          this.state.comments.map(comment => (
-            <div key={ comment.id }>
-              <div>{ comment.postId }</div>
-              <div>{ comment.name }</div>
-              <div>{ comment.email }</div>
-              <div>{ comment.body }</div>
-            </div>
-          ))
+          <div>
+            { this.state.comments.map(comment => (
+              <div className="card" key={ comment.id }>
+                <div className="card-body">
+                  <h5 className="card-title">{ comment.id }. { comment.name }</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">{ comment.email }</h6>
+                  <p className="card-text">{ comment.body }</p>
+                </div>
+              </div>
+            )) }
+            <div className="text-muted">Viewing comments for post { this.props.postId }</div>
+          </div>
         }
       </div>
     );
