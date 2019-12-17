@@ -2,3 +2,12 @@
 #root {
   width: 100%;
 }
+.navbar {
+  background-color: #049fd9 !important;
+}
+.navbar-brand {
+  letter-spacing: 5px;
+}
+.navbar-after {
+  padding: 70px 0 50px;
+}

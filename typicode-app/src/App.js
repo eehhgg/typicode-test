@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Navbar from './components/navbar';
 import Login from './components/login';
 import Posts from './components/posts';
 
@@ -7,7 +8,9 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    this.onLogin = this.onLogin.bind(this);
     this.onLogout = this.onLogout.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     this.state = {
       user: null
     };
@@ -16,10 +19,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        { !this.state.user && <Login onLogin={ user => this.onLogin(user) } /> }
+        { !this.state.user &&
+          <Login onLogin={ this.onLogin } /> }
         { this.state.user &&
           <div>
-            <button onClick={ this.onLogout }>SIGN OUT</button>
+            <Navbar onLogout={ this.onLogout } onSearch={ this.onSearch } />
             <Posts userId={ this.state.user.id } />
           </div>
         }
@@ -37,6 +41,10 @@ class App extends React.Component {
     this.setState({
       user: null
     });
+  }
+
+  onSearch(e) {
+    e.preventDefault();
   }
 
 }
